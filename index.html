@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HR Calculator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>HR Calculator</h1>
+    </header>
+
+    <!-- form to obtain employee name -->
+    <form autocomplete="off">
+      <div id="employee">
+        <input id="name" type="text" placeholder="Employee Name" />
+        <input id="submit" type="submit" />
+      </div>
+    </form>
+
+    <!-- display employee name -->
+    <div id="container-name">
+
+    </div>
+
+    <!-- display employee hours -->
+    <div id="container-hours">
+      420
+    </div>
+
+    <!-- button to deduct employee hours -->
+    <div id="button">
+      <button id="button-subtract">Deduct Hours</button>
+    </div>
+
+    <!-- form to obtain start and end date -->
+    <form id="date-form" autocomplete="off">
+      <div id="dates">
+        <input id="start" type="date" />
+        <input id="end" type="date" />
+        <input id="date-submit" type="submit" />
+      </div>
+    </form>
+
+    <!-- Employee Data -->
+    <div id="data">
+      <table id="schedule">
+        <thead>
+          <tr>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- dynamically added by javascript  -->
+        </tbody>
+      </table>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>
