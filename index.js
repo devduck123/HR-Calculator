@@ -99,7 +99,7 @@ function addWeeks(start, end) {
 
       let formattedDate = `${
         currentDate.getUTCMonth() + 1
-      }-${currentDate.getUTCDate()}`;
+      }-${currentDate.getUTCDate()}-${currentDate.getUTCFullYear()}`;
       let newDiv = document.createElement("div");
       let header = document.createElement("h3");
       let newText = document.createTextNode(formattedDate);
@@ -107,9 +107,13 @@ function addWeeks(start, end) {
 
       let hoursInput = document.createElement("input");
       hoursInput.setAttribute("type", "text");
+      hoursInput.placeholder = "Hours";
+      hoursInput.setAttribute("id", formattedDate + "-hours-input");
+      hoursInput.setAttribute("class", "inputtedHours");
 
       let codeInput = document.createElement("input");
       codeInput.setAttribute("type", "text");
+      codeInput.placeholder = "Code";
 
       newDiv.appendChild(header);
       newDiv.appendChild(hoursInput);
@@ -119,5 +123,25 @@ function addWeeks(start, end) {
     }
     // jump to next Monday
     currentDate = currentDate.addDays(2);
+  }
+
+  function addHours() {
+    // iterate all "hours input" in tbody, adding them to a counter
+    // starting hours - counter hours 
+    let rowLength = document.querySelector('#schedule').rows.length;
+    let celLength = document.querySelector('#schedule').rows[1].cells.length;  // row 0 = MON/TUE/WED...
+    let counter = 0;
+    for (let i = 1; i < rowLength; i++)
+    {
+      for (let j = 0; j < celLength; j++)
+      {
+          // counter = counter + parseInt(document.querySelector('#schedule').rows[i].cells[j].getElementsByClassName('inputtedHours')[0].value);
+          // why does this return NaN???? FIXME pls
+
+          console.log(document.querySelector("#schedule").rows[i].cells[j].getElementsByClassName("inputtedHours")[0].value);
+      }
+    }
+    // console.log(counter);
+
   }
 }
