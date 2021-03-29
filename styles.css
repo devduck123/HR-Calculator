@@ -2,6 +2,7 @@ body {
     font-family: sans-serif;
     background-color: rgb(69, 69, 69);
     color: white;
+    box-sizing: border-box;
 }
 
 h1 {
@@ -77,7 +78,20 @@ td, th {
 
 input {
     text-align: center;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: bold;
     margin: 4px;
+    background-color: rgb(241, 236, 236);
+}
+
+.dayInfo {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.inputtedHours, .inputtedCode {
+    border: 1.5px solid black;
+    overflow: hidden;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
 }

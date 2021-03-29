@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let start = new Date(document.querySelector("#start").value);
     let end = new Date(document.querySelector("#end").value);
     // console.log(numWeeks);
-
+    clearRows();
     addWeeks(start, end);
 
     return false;
@@ -107,7 +107,7 @@ function addWeeks(start, end) {
       header.appendChild(newText);
 
       let hoursInput = document.createElement("input");
-      hoursInput.setAttribute("type", "text");
+      hoursInput.setAttribute("type", "number");
       hoursInput.placeholder = "Hours";
       hoursInput.setAttribute("id", formattedDate + "-hours-input");
       hoursInput.setAttribute("class", "inputtedHours");
@@ -115,7 +115,9 @@ function addWeeks(start, end) {
       let codeInput = document.createElement("input");
       codeInput.setAttribute("type", "text");
       codeInput.placeholder = "Code";
+      codeInput.setAttribute("class", "inputtedCode");
 
+      newDiv.setAttribute("class", "dayInfo");
       newDiv.appendChild(header);
       newDiv.appendChild(hoursInput);
       newDiv.appendChild(codeInput);
@@ -124,6 +126,14 @@ function addWeeks(start, end) {
     }
     // jump to next Monday
     currentDate = currentDate.addDays(2);
+  }
+}
+
+function clearRows() {
+  let rowLength = document.querySelector('#schedule').rows.length;
+  for (let i = 1; i < rowLength; i++)
+  {
+    document.querySelector("#schedule").rows[1].remove(); // row moves up once removed
   }
 }
 
