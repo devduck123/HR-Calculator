@@ -1,3 +1,4 @@
+const START_HOURS = 420;
 let hours = 420;
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -50,7 +51,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function subtract() {
   // subract x hours when clicked, (will later take a parameter to determine x)
-  hours = hours - 8;
+  let hoursWorked = addHours();
+  hours = START_HOURS - hoursWorked;
   // x cannot be negative
   if (hours < 0) {
     hours = 0;
@@ -81,7 +83,7 @@ function addWeeks(start, end) {
   const weekDays = 5;
   let numWeeks = weeksBetween(start, end);
   //  FIXME: this function adds weeks to the table
-  console.log(numWeeks);
+  // console.log(numWeeks);
 
   let tbodyRef = document
     .getElementById("schedule")
@@ -92,7 +94,6 @@ function addWeeks(start, end) {
   for (let i = 0; i < numWeeks; i++) {
     currentDate = getMonday(currentDate);
     let row = tbodyRef.insertRow();
-
 
     for (let i = 0; i < weekDays; i++) {
       let cell = row.insertCell();
@@ -124,24 +125,25 @@ function addWeeks(start, end) {
     // jump to next Monday
     currentDate = currentDate.addDays(2);
   }
+}
 
-  function addHours() {
-    // iterate all "hours input" in tbody, adding them to a counter
-    // starting hours - counter hours 
-    let rowLength = document.querySelector('#schedule').rows.length;
-    let celLength = document.querySelector('#schedule').rows[1].cells.length;  // row 0 = MON/TUE/WED...
-    let counter = 0;
-    for (let i = 1; i < rowLength; i++)
-    {
-      for (let j = 0; j < celLength; j++)
-      {
-          // counter = counter + parseInt(document.querySelector('#schedule').rows[i].cells[j].getElementsByClassName('inputtedHours')[0].value);
-          // why does this return NaN???? FIXME pls
-
-          console.log(document.querySelector("#schedule").rows[i].cells[j].getElementsByClassName("inputtedHours")[0].value);
-      }
+function addHours() {
+  // iterate all "hours input" in tbody, adding them to a counter
+  // starting hours - counter hours
+  let rowLength = document.querySelector("#schedule").rows.length;
+  let celLength = document.querySelector("#schedule").rows[1].cells.length; // row 0 = MON/TUE/WED...
+  let counter = 0;
+  for (let i = 1; i < rowLength; i++) {
+    for (let j = 0; j < celLength; j++) {
+      let currentVal =
+        parseFloat(
+          document
+            .querySelector("#schedule")
+            .rows[i].cells[j].getElementsByClassName("inputtedHours")[0].value
+        ) || 0;
+      counter += currentVal;
     }
-    // console.log(counter);
-
   }
+  return counter;
+  // console.log(counter);
 }
