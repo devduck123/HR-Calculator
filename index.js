@@ -1,5 +1,5 @@
-const START_HOURS = 420;
-let hours = 420;
+const START_HOURS = 500;
+let hours = 500;
 
 document.addEventListener("DOMContentLoaded", function () {
   // disable submit initially
